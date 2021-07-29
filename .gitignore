@@ -1,5 +1,6 @@
 .project
 .settings
 .sfdx
+.git
 salesforce.schema
 Referenced Packages
