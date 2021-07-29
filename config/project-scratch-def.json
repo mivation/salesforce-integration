@@ -3,5 +3,5 @@
   "edition": "Developer",
   "features": ["EnableSetPasswordInApi", "ServiceCloud", "LightningSalesConsole"],
   "hasSampleData": true,
-  "username": "gabrielh@mivation.com"
+  "username": "email-placeholder@email.com"
 }
