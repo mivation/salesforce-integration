@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+	<types>
+		<members>GatewayRequest</members>
+		<members>LeaderboardLegendsCallout_Case</members>
+		<members>LeaderboardLegendsCallout_CaseTestClass</members>
+		<members>LeaderboardLegendsCallout_Opportunity</members>
+		<name>ApexClass</name>
+	</types>
+	<types>
+    	<members>Case.Previously_Closed__c</members>
+		<members>Case.Product__c</members>
+		<members>Opportunity.Previously_Closed_Won__c</members>
+        <members>Opportunity.Previously_Meeting_Scheduled__c</members>
+		<name>CustomField</name>
+	</types>
+	<types>
+		<members>Mivation_Gateway__mdt</members>
+		<name>CustomMetadata</name>
+	</types>
+	<types>
+		<members>Mivation_Gateway__mdt</members>
+		<name>CustomObject</name>
+	</types>
+	<types>
+		<members>LeaderboardLegend_Push_On_Case_Closed</members>
+		<members>LeaderboardLegends_Push_On_Closed_Won</members>
+		<name>Flow</name>
+	</types>
+	<version>51.0</version>
+</Package>

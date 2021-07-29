@@ -1,0 +1,7 @@
+{
+  "orgName": "mivation-gateway-example",
+  "edition": "Developer",
+  "features": ["EnableSetPasswordInApi", "ServiceCloud", "LightningSalesConsole"],
+  "hasSampleData": true,
+  "username": "gabrielh@mivation.com"
+}
