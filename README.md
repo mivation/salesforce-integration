@@ -98,7 +98,10 @@ In order to add a custom field you would go to the callout associated with the o
 
 Once these fields are added, you're good to go!
 
+---
 
+# License Conditions
+The example code in this repository is made available, by Mivation, under the MIT License.  The Mivation products and systems that the example code integrates with, including, but without limitation to: Mivation Gateway, RacingSnail and Leaderboard Legends are the sole and exclusive property of Mivation to which Mivation owns all right, title and interest in and to the intellectual property rights therein and they are licensed separately and not included in the MIT License covering this example code.  The Salesforce CRM system, including the Force.com platform and Apex language, are the property of Salesforce.com, Inc and are also licensed separately. 
 
 
 
