@@ -48,7 +48,7 @@ In this action we have chosen to Call Apex. It calls the class and passes the fo
 * Activity Type (String)
     * This field is used by Leaderboard Legends to determine which points to assign. In this case we use `case-closed`.
 * Void? (Bool) 
-    * This boolean is used to determine wether or not this record should add or deduct to a users points. This is typically used in events where an activity no longer qualifies. In our case example we support voids on re-opened cases. 
+    * This boolean is used to determine whether or not this record should add or deduct to a users points. This is typically used in events where an activity no longer qualifies. In our case example we support voids on re-opened cases. 
 
 ## Void Configuration
 In this screenshot you can see that after sending the information to the Gateway we also set a field called Previously Closed. In this example, we set this to true on every Case closed because if it does re-open we want to make sure that Case does not count as an additional point towards that user.
@@ -78,18 +78,18 @@ Included in this example is the following:
 * Custom Fields
     * Case
         * Previously_Closed__c - Checkbox
-            * This field is used to determine wether or not a record is a void.
+            * This field is used to determine whether or not a record is a void.
     * Opportunity
         * Previously_Closed_Won__c - Checkbox
-            * This field is used to determine wether or not a record is a void.
+            * This field is used to determine whether or not a record is a void.
         * Previously_Meeting_Scheduled__c - Checkbox
-            * This field is used to determine wether or not a record is a void.
+            * This field is used to determine whether or not a record is a void.
 * Custom Objects
     * Mivation_Gateway_mdt - Custom Metadata Object
         * The fields are the same as the custom metadata record above. This object is where the metadata record lives.
 
 # How do I add support for Custom Fields?
-In order to add a custom field you would go to the callout associated with the object. For this example, we will use Case. Let's say we add a new checkbox field called `Referral_Mentioned__c`. This field will be utilized to signify wether or not the support representative mentioned referrals. To add support for this you must do 2 things: Add custom field to SOQL query on the record, and add the field to the JSON generator. See Below:
+In order to add a custom field you would go to the callout associated with the object. For this example, we will use Case. Let's say we add a new checkbox field called `Referral_Mentioned__c`. This field will be utilized to signify whether or not the support representative mentioned referrals. To add support for this you must do 2 things: Add custom field to SOQL query on the record, and add the field to the JSON generator. See Below:
 ## Adding Field To SOQL Query
 ![Custom Field SOQL Query](/.github/images/custom-field-soql-query.gif)
 
