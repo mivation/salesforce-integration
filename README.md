@@ -4,13 +4,15 @@ This project contains an example of a Salesforce Integration to the Mivation Gat
 
 # Installation
 
-_Note: This project assumes you are using the Salesforce CLI, if you do not have it installed please follow the instructions found [here] (https://developer.salesforce.com/docs/atlas.en-us.248.0.sfdx_setup.meta/sfdx_setup/sfdx_setup_install_cli.htm)
+## Requirements
+* Enterprise Edition or higher
+* Salesforce CLI [Installation Instructions](https://developer.salesforce.com/docs/atlas.en-us.248.0.sfdx_setup.meta/sfdx_setup/sfdx_setup_install_cli.htm)
 
 This is an example integration which provides a barebone implementation of the Mivation Gateway's activity format.
 
 It is recommended that you first deploy this to a Sandbox or a Scratch org
 
-_Note: It is not necessary to use a scratch org, however, if you want to deploy it to a scratch org you will need to sign in to your Dev Hub account [here](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_cli_usernames_orgs.htm)_
+<sub>_Note: It is not necessary to use a scratch org, however, if you want to deploy it to a scratch org you will need to sign in to your Dev Hub account [here](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_cli_usernames_orgs.htm)_</sub>
 
 First authorize and set a default org for your project, you can find more information [here](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_cli_usernames_orgs.htm)
 
