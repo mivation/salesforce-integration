@@ -3,24 +3,42 @@ This project contains an example of a Salesforce Integration to the Mivation Gat
 
 
 # Installation
-This example is recommended to be used in a fresh scratch-org to prevent potential conflicts.
 
-_Note: You need to have signed into your deb hub using the CLI you can find the steps [here](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_cli_usernames_orgs.htm)_.
+## Requirements
+* Enterprise Edition or higher
+* Salesforce CLI [Installation Instructions](https://developer.salesforce.com/docs/atlas.en-us.248.0.sfdx_setup.meta/sfdx_setup/sfdx_setup_install_cli.htm)
 
-***Before installing please set the fields in `project-scratch-def.json`***
+This is an example integration which provides a barebone implementation of the Mivation Gateway's activity format.
 
-Open this project within terminal and run the following commands
-```
-sfdx force:org:create -f config/project-scratch-def.json -a <InsertScratchOrgAlias> --setdefaultusername
-```
-Once that is created you will be given an alias. You will need that alias to run the following command to open the org:
-```
-sfdx force:org:open -u <DevHubAlias>
-```
-To push the project to the org use this command:
-```
-sfdx force:source:push
-```
+It is recommended that you first deploy this to a Sandbox or a Scratch org
+
+<sub>_Note: It is not necessary to use a scratch org, however, if you want to deploy it to a scratch org you will need to sign in to your Dev Hub account [here](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_cli_usernames_orgs.htm)_</sub>
+
+First authorize and set a default org for your project, you can find more information [here](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_cli_usernames_orgs.htm)
+
+Once authorized you can run the following command:
+```sf project deploy start```
+This will begin the deployment of the metadata contained in the project. Once deployed you can begin configuring the integration.
+
+## Setup API Credentials
+This integration contains Custom Metadata which is used to store the credentials for the integration.
+
+1. Click on Setup
+2. In the quick find box search 'Custom Metadata'
+3. On the Mivation Gateway object select 'Manage Records'
+4. Insert your API Credentials and click save.
+
+## Enable Salesforce Flows
+We provide 2 example Salesforce Flows. These provide support for Closed Cases and Closed Won opportunities. These will need to be enabled before any activities are sent to the Mivation Gateway. 
+
+1. Click on Setup
+2. In the quick find box search 'Flows'
+3. In the list of flows look for `LeaderboardLegends - Push On Case Closed` and `LeaderboardLegends - Push On Closed Won`
+4. On each of these flows select "Activate"
+
+These flows assume the activity names "closed-case" and "closed-won" you can find these settings by selecting any of the Send To Gateway action elements within the Flow builder. 
+
+
 
 # What is supported?
 Out of the box we support two Objects and 3 unique activity types. Each activity type also supports voids natively.
@@ -35,13 +53,13 @@ Out of the box we support two Objects and 3 unique activity types. Each activity
 
 
 # How Does It Work?
-This example utilizes Process Builder events with invocable Apex Classes. Process Builder is used to configure when an activity occurs. When the event occurs it triggers an invocable class which takes the variables configured in the flow as well as the details of the activity's record.
+This example utilizes Record-Triggered Flows with invocable Apex Classes. Flows is used to configure when an activity occurs. When the event occurs it triggers an invocable method which takes the variables configured in the flow as well as the pre-defined fields in the provided Apex Classes. 
 
-## Process Builder Configuration
-For instance in this project we support Case Closed Events. If you navigate to Setup > Process Automation > Process Builder > LeaderboardLegends - Case Events
-![Case Process Builder](/.github/images/case-process-builder.png)
+## Flow Builder Configuration
+For instance in this project we support Case Closed Events. If you navigate to Setup > Process Automation > Flows > LeaderboardLegends - On Case Closed
+![Case Flow Builder](/.github/images/case-flow-builder.png)
 In the first conditional box you will see we have a simple activity configured for when a Case is Closed. Once that case has closed it the invokes an Apex Class.
-![Invocable Apex Configuration](/.github/images/case-invocable-apex.png)
+![Invocable Apex Configuration](/.github/images/case-flow-invocable-apex.png)
 In this action we have chosen to Call Apex. It calls the class and passes the following variables to it. You will notice that the variables in grey are *required* fields
 * CaseIDs ([Record].Id)
     * We pass the Id of the case associated with the initial event.
@@ -52,14 +70,14 @@ In this action we have chosen to Call Apex. It calls the class and passes the fo
 
 ## Void Configuration
 In this screenshot you can see that after sending the information to the Gateway we also set a field called Previously Closed. In this example, we set this to true on every Case closed because if it does re-open we want to make sure that Case does not count as an additional point towards that user.
-![Void Configuration](/.github/images/case-void-configuration.png)
+![Void Configuration](/.github/images/case-flow-void-configuration.png)
 If this case is modified in anyway, we will check the status of the case and if the Status is not closed but the `Previously Closed` field is `true` we will send `void=true` to the gateway which disqualifies that record from being scored, deducting a point.
 
 # What's Included?
 Included in this example is the following:
 * Apex Classes
     * GatewayRequest
-        * This class is used to receive the variables from the process builder flow.
+        * This class is used to receive the variables defined in the Flow Builder.
     * LeaderboardLegendsCallout_Case
         * This class is used for sending any Case related activities to the Gateway. It is responsible for the compiling of the JSON and sending the HTTP POST request to the gateway. More information about the API can be found at the [integration-gateway](https://github.com/mivation/integration-gateway) repo.
     * LeaderboardLegendsCallout_Opportunity
