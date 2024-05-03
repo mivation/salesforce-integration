@@ -29,14 +29,14 @@ This integration contains Custom Metadata which is used to store the credentials
 4. Insert your API Credentials and click save.
 
 ## Enable Salesforce Flows
-We provide 2 example Salesforce Flows. These provide support for Closed Cases and Closed Won opportunities. These will need to be enabled before any activities are sent to the Mivation Gateway.
+We provide 2 example Salesforce Flows. These provide support for Closed Cases and Closed Won opportunities. These will need to be enabled before any activities are sent to the Mivation Gateway. 
 
 1. Click on Setup
 2. In the quick find box search 'Flows'
 3. In the list of flows look for `LeaderboardLegends - Push On Case Closed` and `LeaderboardLegends - Push On Closed Won`
 4. On each of these flows select "Activate"
 
-These flows assume the activity names "closed-case" and "closed-won" you can find these settings by selecting any of the Send To Gateway action elements within the Flow builder.
+These flows assume the activity names "closed-case" and "closed-won" you can find these settings by selecting any of the Send To Gateway action elements within the Flow builder. 
 
 
 
@@ -57,9 +57,9 @@ This example utilizes Record-Triggered Flows with invocable Apex Classes. Proces
 
 ## Process Builder Configuration
 For instance in this project we support Case Closed Events. If you navigate to Setup > Process Automation > Process Builder > LeaderboardLegends - Case Events
-![Case Process Builder](/.github/images/case-process-builder.png)
+![Case Process Builder](/.github/images/case-flow-builder.png)
 In the first conditional box you will see we have a simple activity configured for when a Case is Closed. Once that case has closed it the invokes an Apex Class.
-![Invocable Apex Configuration](/.github/images/case-invocable-apex.png)
+![Invocable Apex Configuration](/.github/images/case-flow-invocable-apex.png)
 In this action we have chosen to Call Apex. It calls the class and passes the following variables to it. You will notice that the variables in grey are *required* fields
 * CaseIDs ([Record].Id)
     * We pass the Id of the case associated with the initial event.
@@ -70,7 +70,7 @@ In this action we have chosen to Call Apex. It calls the class and passes the fo
 
 ## Void Configuration
 In this screenshot you can see that after sending the information to the Gateway we also set a field called Previously Closed. In this example, we set this to true on every Case closed because if it does re-open we want to make sure that Case does not count as an additional point towards that user.
-![Void Configuration](/.github/images/case-void-configuration.png)
+![Void Configuration](/.github/images/case-flow-void-configuration.png)
 If this case is modified in anyway, we will check the status of the case and if the Status is not closed but the `Previously Closed` field is `true` we will send `void=true` to the gateway which disqualifies that record from being scored, deducting a point.
 
 # What's Included?
