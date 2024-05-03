@@ -1,7 +1,13 @@
 {
-  "orgName": "mivation-gateway-example",
+  "orgName": "Demo company",
   "edition": "Developer",
-  "features": ["EnableSetPasswordInApi", "ServiceCloud", "LightningSalesConsole"],
-  "hasSampleData": true,
-  "username": "email-placeholder@email.com"
+  "features": ["EnableSetPasswordInApi"],
+  "settings": {
+    "lightningExperienceSettings": {
+      "enableS1DesktopEnabled": true
+    },
+    "mobileSettings": {
+      "enableS1EncryptedStoragePref2": false
+    }
+  }
 }
