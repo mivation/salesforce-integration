@@ -53,11 +53,11 @@ Out of the box we support two Objects and 3 unique activity types. Each activity
 
 
 # How Does It Work?
-This example utilizes Record-Triggered Flows with invocable Apex Classes. Process Builder is used to configure when an activity occurs. When the event occurs it triggers an invocable method which takes the variables configured in the flow as well as the pre-defined fields in the provided Apex Classes. 
+This example utilizes Record-Triggered Flows with invocable Apex Classes. Flows is used to configure when an activity occurs. When the event occurs it triggers an invocable method which takes the variables configured in the flow as well as the pre-defined fields in the provided Apex Classes. 
 
-## Process Builder Configuration
-For instance in this project we support Case Closed Events. If you navigate to Setup > Process Automation > Process Builder > LeaderboardLegends - Case Events
-![Case Process Builder](/.github/images/case-flow-builder.png)
+## Flow Builder Configuration
+For instance in this project we support Case Closed Events. If you navigate to Setup > Process Automation > Flows > LeaderboardLegends - On Case Closed
+![Case Flow Builder](/.github/images/case-flow-builder.png)
 In the first conditional box you will see we have a simple activity configured for when a Case is Closed. Once that case has closed it the invokes an Apex Class.
 ![Invocable Apex Configuration](/.github/images/case-flow-invocable-apex.png)
 In this action we have chosen to Call Apex. It calls the class and passes the following variables to it. You will notice that the variables in grey are *required* fields
@@ -77,7 +77,7 @@ If this case is modified in anyway, we will check the status of the case and if 
 Included in this example is the following:
 * Apex Classes
     * GatewayRequest
-        * This class is used to receive the variables from the process builder flow.
+        * This class is used to receive the variables defined in the Flow Builder.
     * LeaderboardLegendsCallout_Case
         * This class is used for sending any Case related activities to the Gateway. It is responsible for the compiling of the JSON and sending the HTTP POST request to the gateway. More information about the API can be found at the [integration-gateway](https://github.com/mivation/integration-gateway) repo.
     * LeaderboardLegendsCallout_Opportunity
